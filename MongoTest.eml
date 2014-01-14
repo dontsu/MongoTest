@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<output-test url="file://$MODULE_DIR$/target/test-classes"/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
+		<excludeFolder url="file://$MODULE_DIR$/target"/>
+	</contentEntry>
+	<levels>
+		<level name="Maven: org.mongodb:mongo-java-driver:2.11.3" value="project"/>
+		<level name="Maven: com.sparkjava:spark-core:1.1.1" value="project"/>
+		<level name="Maven: org.slf4j:slf4j-api:1.7.2" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-server:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-http:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-util:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-io:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-webapp:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-xml:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-servlet:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.eclipse.jetty:jetty-security:9.0.2.v20130417" value="project"/>
+		<level name="Maven: org.freemarker:freemarker:2.3.20" value="project"/>
+	</levels>
+</component>
