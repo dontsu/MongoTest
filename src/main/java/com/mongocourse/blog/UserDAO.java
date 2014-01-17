@@ -36,7 +36,7 @@ public class UserDAO {
 
     // validates that username is unique and insert into db
     public boolean addUser(String username, String password, String email) {
-        BasicDBObject object = new BasicDBObject("username", username);
+        BasicDBObject object = new BasicDBObject("_id", username);
         String passwordHash = makePasswordHash(password, Integer.toString(random.nextInt()));
         object.append("password", passwordHash);
         if (email != null && !email.equals("")) {
@@ -56,7 +56,7 @@ public class UserDAO {
         DBObject user = null;
 
         DBObject object = new BasicDBObject();
-        object.put("username", username);
+        object.put("_id", username);
         user =  usersCollection.findOne(object);
         if (user == null) {
             System.out.println("User not in database");
