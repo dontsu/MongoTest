@@ -307,7 +307,12 @@ public class BlogController {
                     template.process(root, writer);
                 }
                 else {
-                    blogPostDAO.addPostComment(name, email, body, permalink);
+                    try {
+						blogPostDAO.addPostComment(name, email, body, permalink);
+					} catch (Exception e) {
+						 e.printStackTrace();
+			             response.redirect("/internal_error");
+					}
                     response.redirect("/post/" + permalink);
                 }
             }

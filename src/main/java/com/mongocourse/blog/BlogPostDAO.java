@@ -36,7 +36,7 @@ public class BlogPostDAO {
         List<DBObject> posts = new ArrayList<DBObject>();
         BasicDBObject query = new BasicDBObject("date", 1);
         DBCursor cursor = postsCollection.find().sort(query).limit(limit);
-        if (cursor.hasNext()) {
+        while (cursor.hasNext()) {
             posts.add(cursor.next());
         }
         return posts;
@@ -65,15 +65,17 @@ public class BlogPostDAO {
 
     // Append a comment to a blog post
     public void addPostComment(final String name, final String email, final String body,
-                               final String permalink) {
+                               final String permalink) throws Exception {
         BasicDBObject comment = new BasicDBObject();
         comment.put("author", name);
         comment.put("body", body);
-        comment.put("date", new Date());
         if (email != null && !email.isEmpty()) {
             comment.put("email", email);
         }
-        postsCollection.update(new BasicDBObject("permalink", permalink), new BasicDBObject("$set", comment), true, false);
+        WriteResult res = postsCollection.update(new BasicDBObject("permalink", permalink), new BasicDBObject("$push", new BasicDBObject("comments",comment)), true, false);
+        if(res.getLastError().isEmpty()){
+        	throw new Exception();
+        }
 
     }
 
