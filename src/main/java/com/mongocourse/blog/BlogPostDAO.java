@@ -42,6 +42,18 @@ public class BlogPostDAO {
         return posts;
     }
 
+    public List<DBObject> findByTagDateDescending(final String tag) {
+        List<DBObject> posts;
+        BasicDBObject query = new BasicDBObject("tags", tag);
+        System.out.println("/tag query: " + query.toString());
+        DBCursor cursor = postsCollection.find(query).sort(new BasicDBObject().append("date", -1)).limit(10);
+        try {
+            posts = cursor.toArray();
+        } finally {
+            cursor.close();
+        }
+        return posts;
+    }
 
     public String addPost(String title, String body, List tags, String username) {
 
