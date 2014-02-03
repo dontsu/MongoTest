@@ -25,6 +25,7 @@ public class BlogPostDAO {
 
         DBObject post = null;
         BasicDBObject query = new BasicDBObject("permalink", permalink);
+        postsCollection.ensureIndex(query);
         post = postsCollection.findOne(query);
         return post;
     }
@@ -35,6 +36,7 @@ public class BlogPostDAO {
 
         List<DBObject> posts = new ArrayList<DBObject>();
         BasicDBObject query = new BasicDBObject("date", 1);
+        postsCollection.ensureIndex(query);
         DBCursor cursor = postsCollection.find().sort(query).limit(limit);
         while (cursor.hasNext()) {
             posts.add(cursor.next());
@@ -46,6 +48,7 @@ public class BlogPostDAO {
         List<DBObject> posts;
         BasicDBObject query = new BasicDBObject("tags", tag);
         System.out.println("/tag query: " + query.toString());
+        postsCollection.ensureIndex(query);
         DBCursor cursor = postsCollection.find(query).sort(new BasicDBObject().append("date", -1)).limit(10);
         try {
             posts = cursor.toArray();
