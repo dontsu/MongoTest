@@ -23,11 +23,9 @@ public class BlogPostDAO {
     // Return a single post corresponding to a permalink
     public DBObject findByPermalink(String permalink) {
 
-        DBObject post = null;
         BasicDBObject query = new BasicDBObject("permalink", permalink);
         postsCollection.ensureIndex(query);
-        post = postsCollection.findOne(query);
-        return post;
+        return postsCollection.findOne(query);
     }
 
     // Return a list of posts in descending order. Limit determines
